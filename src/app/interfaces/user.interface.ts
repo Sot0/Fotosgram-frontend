@@ -5,4 +5,5 @@ export interface IUsuario {
     email?:     string;
     nombre?:    string;
     updatedAt?: string;
+    password?:  string;
 }
