@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApiRest: 'http://localhost:3000'
+  urlApiRest: 'http://192.168.1.71:3000'
 };
 
 /*

@@ -13,4 +13,5 @@ export interface IPost {
     mensaje?:       string;
     updatedAt?:     string;
     usuario?:       IUsuario;
+    posicion?:      boolean;
 }

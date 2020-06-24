@@ -1,18 +1,20 @@
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab2Page } from './tab2.page';
-import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { PostPage } from './post.page';
+import { PostPageRoutingModule } from './post-routing.module';
+import { PipesModule } from '../../pipes/pipes.module';
+
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab2PageRoutingModule
+    PostPageRoutingModule,
+    PipesModule
   ],
-  declarations: [Tab2Page]
+  declarations: [PostPage]
 })
-export class Tab2PageModule {}
+export class PostPageModule {}

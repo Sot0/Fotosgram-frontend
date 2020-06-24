@@ -3,6 +3,7 @@ import { IUsuario } from '../../interfaces/user.interface';
 import { UsuarioService } from '../../services/usuario.service';
 import { NgForm } from '@angular/forms';
 import { UiService } from '../../services/ui-service.service';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,7 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
+    private postService: PostsService,
     private uiService: UiService
   ) {}
 
@@ -35,6 +37,7 @@ export class ProfilePage implements OnInit {
   }
 
   logout() {
-
+    this.postService.paginaPosts = 0;
+    this.usuarioService.logout();
   }
 }

@@ -40,12 +40,16 @@ export class LoginPage implements OnInit {
   }
 
   async login( formLogin: NgForm ) {
+    this.uiService.toastInformativo('Cargando ...');
     if(formLogin.invalid) return;
 
     const valido = await this.usuarioService.login(this.loginUser.email, this.loginUser.password);
-
-    if(valido) this.navCtrl.navigateRoot('/main/tabs/home', { animated: true });
-    else this.uiService.alertaInformativa( 'Usuario / contraseña incorrectos' );
+    
+    if(valido) {
+      this.navCtrl.navigateRoot('/main/tabs/home', { animated: true });
+    } else {
+      this.uiService.alertaInformativa( 'Usuario / contraseña incorrectos' );
+    }
   }
 
   async registro(formSignUp: NgForm) {

@@ -18,6 +18,10 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.siguientesPosts();
+    this.postService.nuevoPost
+      .subscribe( post => {
+        this.posts.unshift(post);
+      });
   }
   
   recargar( event ) {

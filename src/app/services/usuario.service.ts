@@ -29,9 +29,9 @@ export class UsuarioService {
         password
       };
       this.http.post(`${urlApi}/user/login`, data)
-        .subscribe( resp => {
+        .subscribe( async resp => {
           if(resp['ok']) {
-            this.guardarToken(resp['token']);
+            await this.guardarToken(resp['token']);
             resolve(true);
           } else {
             this.token = null;
@@ -41,6 +41,13 @@ export class UsuarioService {
         });
     });
   };
+
+  logout() {
+    this.token = null;
+    this.usuario = null;
+    this.storage.remove(nombreTokenStorage);
+    this.navCtrl.navigateRoot('/login', { animated: true});
+  }
 
   registro( usuario: IUsuario ) {
     return new Promise( resolve => {
@@ -70,6 +77,8 @@ export class UsuarioService {
   async guardarToken( token: string ) {
     this.token = token;
     await this.storage.set(nombreTokenStorage, token);
+
+    await this.validaToken();
   };
 
   async cargarToken() {
